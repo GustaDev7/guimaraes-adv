@@ -7,8 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Adicionar Swiper CSS no head -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     
     <script>
         tailwind.config = {
@@ -365,75 +363,62 @@
     </script>
 
 
- <!-- Depoimentos -->
-<section class="py-20 bg-primary" id="depoimentos">
+<!-- Depoimentos -->
+<section class="py-20 bg-grayish" id="depoimentos">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">Depoimentos</h2>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Depoimentos</h2>
             <div class="gold-divider"></div>
-            <p class="text-gray-30 max-w-2xl mx-auto mt-6">O que nossos clientes dizem sobre nosso trabalho.</p>
+            <p class="text-gray-700 max-w-2xl mx-auto mt-6">O que nossos clientes dizem sobre nosso trabalho.</p>
         </div>
-
-        <!-- Swiper -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- Depoimento 1 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
-                        <div class="text-secondary text-3xl mb-4">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="text-gray-700 mb-6">"Graças ao escritório Veredas consegui minha aposentadoria após anos de tentativas frustradas. Profissionais extremamente competentes e atenciosos."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="João Martins" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
-                            <div>
-                                <h4 class="font-bold text-primary">João Martins</h4>
-                                <p class="text-sm text-gray-500">Aposentado</p>
-                            </div>
-                        </div>
-                    </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Depoimento 1 -->
+            <div data-aos="fade-up" class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                <div class="text-secondary text-3xl mb-4">
+                    <i class="fas fa-quote-left"></i>
                 </div>
-
-                <!-- Depoimento 2 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
-                        <div class="text-secondary text-3xl mb-4">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="text-gray-700 mb-6">"Recebi orientação clara em cada etapa do processo. O auxílio doença foi concedido mais rápido do que esperava. Recomendo a todos!"</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ana Santos" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
-                            <div>
-                                <h4 class="font-bold text-primary">Ana Santos</h4>
-                                <p class="text-sm text-gray-500">Professora</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Depoimento 3 -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
-                        <div class="text-secondary text-3xl mb-4">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="text-gray-700 mb-6">"Após o falecimento do meu marido, a Dra. Ana me orientou com sensibilidade e competência sobre os direitos previdenciários que eu tinha."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Maria Fernandes" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
-                            <div>
-                                <h4 class="font-bold text-primary">Maria Fernandes</h4>
-                                <p class="text-sm text-gray-500">Viúva</p>
-                            </div>
-                        </div>
+                <p class="text-gray-700 mb-6">"Graças ao escritório Veredas consegui minha aposentadoria após anos de tentativas frustradas. Profissionais extremamente competentes e atenciosos."</p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="João Martins" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                    <div>
+                        <h4 class="font-bold text-primary">João Martins</h4>
+                        <p class="text-sm text-gray-500">Aposentado</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Adicionar navegação (botões de próxima e anterior) -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- Depoimento 2 -->
+            <div data-aos="fade-up" data-aos-delay="100" class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                <div class="text-secondary text-3xl mb-4">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="text-gray-700 mb-6">"Recebi orientação clara em cada etapa do processo. O auxílio doença foi concedido mais rápido do que esperava. Recomendo a todos!"</p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ana Santos" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                    <div>
+                        <h4 class="font-bold text-primary">Ana Santos</h4>
+                        <p class="text-sm text-gray-500">Professora</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Depoimento 3 -->
+            <div data-aos="fade-up" data-aos-delay="200" class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                <div class="text-secondary text-3xl mb-4">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="text-gray-700 mb-6">"Após o falecimento do meu marido, a Dra. Ana me orientou com sensibilidade e competência sobre os direitos previdenciários que eu tinha."</p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Maria Fernandes" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                    <div>
+                        <h4 class="font-bold text-primary">Maria Fernandes</h4>
+                        <p class="text-sm text-gray-500">Viúva</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        
         <!-- Link para mais depoimentos -->
         <div class="text-center mt-12">
             <a href="#mais-depoimentos" class="text-primary hover:text-accent transition duration-300">Veja mais depoimentos</a>
@@ -441,29 +426,6 @@
     </div>
 </section>
 
-<!-- Adicionar Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 40
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 50
-            }
-        }
-    });
-</script>
 
 
 <!-- CTA -->
