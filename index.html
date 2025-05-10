@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guimarães | Advocacia Previdenciária</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Adicionar Swiper CSS no head -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1b1f14',
+                        secondary: '#dba437',
+                        light: '#f5f5f5',
+                        grayish: '#cfcfcf',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hero-overlay {
+            background: rgba(27, 31, 20, 0.7);
+        }
+        .gold-divider {
+            height: 3px;
+            width: 80px;
+            background: #c7a35c;
+            margin: 15px auto;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #dba437;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+                @keyframes fade-in-up {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+        .fade-in-up {
+        animation: fade-in-up 0.8s ease-out both;
+        }
+
+        @keyframes text-reveal {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-text-reveal {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: text-reveal 2s ease-out forwards;
+}
+
+/* Efeitos de hover nos cards */
+.card:hover {
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animação de "pulse" nos cards */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hover\:pulse:hover {
+  animation: pulse 1s infinite;
+}
+    </style>
+</head>
+<body class="font-body text-light bg-primary">
+    <!-- Header -->
+    <header class="fixed w-full bg-gradient-to-r from-primary to-[#1a1a1a] backdrop-blur-md shadow-md z-50">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+        
+        <!-- Logo -->
+        <div class="flex items-center">
+            <div class="text-secondary text-3xl mr-2 hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-balance-scale"></i>
+            </div>
+            <a href="#" class="font-serif text-2xl font-extrabold text-secondary tracking-tight">
+            Guimarães Advocacia
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#sobre" class="nav-link text-light hover:text-secondary transition duration-300">Sobre</a>
+            <a href="#servicos" class="nav-link text-light hover:text-secondary transition duration-300">Áreas de Atuação</a>
+            <a href="#equipe" class="nav-link text-light hover:text-secondary transition duration-300">Equipe</a>
+            <a href="#contato" class="nav-link text-light hover:text-secondary transition duration-300">Contato</a>
+            <a href="#consulta"  class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 
+                text-black font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl 
+                transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-yellow-300">
+            Agende uma Consulta
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-light focus:outline-none" id="menu-btn">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden mt-4 space-y-2 bg-black/70 backdrop-blur-sm rounded-lg p-4" id="mobile-menu">
+        <a href="#sobre" class="block py-2 px-4 text-light hover:text-secondary transition">Sobre</a>
+        <a href="#servicos" class="block py-2 px-4 text-light hover:text-secondary transition">Áreas de Atuação</a>
+        <a href="#equipe" class="block py-2 px-4 text-light hover:text-secondary transition">Equipe</a>
+        <a href="#contato" class="block py-2 px-4 text-light hover:text-secondary transition">Contato</a>
+        <a href="#consulta"  class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 
+                text-black font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl 
+                transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-yellow-300">
+            Agende uma Consulta
+        </a>
+        </div>
+    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('bghero.png');">
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+
+    <!-- Conteúdo Central -->
+    <div class="relative z-10 text-center px-6 max-w-3xl w-full animate-fade-in-up">
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+        Segurança Jurídica no Direito Previdenciário
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-10">
+        Atendimento humanizado com excelência técnica para proteger seus direitos.
+        </p>
+        <a href="#contato"
+        class="inline-block bg-gradient-to-r from-yellow-500 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 
+                text-black font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl 
+                transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-yellow-300">
+        Fale Conosco
+        </a>
+
+    </div>
+    </section>
+
+
+    <section id="servicos" class="py-20 bg-light">
+    <div class="container mx-auto px-6">
+        <!-- Título da Seção -->
+        <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Áreas de Atuação</h2>
+        <div class="gold-divider"></div>
+        </div>
+
+        <!-- Cards de Serviço -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out transform hover:pulse">
+            <div class="text-secondary text-4xl mb-4 transition-all duration-300 ease-in-out hover:text-yellow-500 hover:animate-ping">
+            <i class="fas fa-user-tie"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-primary mb-3 hover:text-yellow-500">Aposentadoria por Idade</h3>
+            <p class="text-gray-600">Assessoria completa para garantir seu direito à aposentadoria no momento adequado.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out transform hover:pulse">
+            <div class="text-secondary text-4xl mb-4 transition-all duration-300 ease-in-out hover:text-yellow-500 hover:animate-ping">
+            <i class="fas fa-procedures"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-primary mb-3 hover:text-yellow-500">Auxílio Doença</h3>
+            <p class="text-gray-600">Atuação estratégica para obtenção do benefício quando a saúde está comprometida.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out transform hover:pulse">
+            <div class="text-secondary text-4xl mb-4 transition-all duration-300 ease-in-out hover:text-yellow-500 hover:animate-ping">
+            <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-primary mb-3 hover:text-yellow-500">Pensão por Morte</h3>
+            <p class="text-gray-600">Proteção aos familiares com orientação jurídica especializada em casos de perda.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out transform hover:pulse">
+            <div class="text-secondary text-4xl mb-4 transition-all duration-300 ease-in-out hover:text-yellow-500 hover:animate-ping">
+            <i class="fas fa-search-dollar"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-primary mb-3 hover:text-yellow-500">Revisão da Vida Toda</h3>
+            <p class="text-gray-600">Análise detalhada para correção de benefícios já concedidos com base em nova legislação.</p>
+        </div>
+        
+        </div>
+    </div>
+    </section>
+
+    <section id="sobre" class="py-20 bg-primary">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center">
+        <!-- Imagem com sobreposição de texto -->
+        <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 relative">
+            <img src="logo.jpg" alt="Equipe do escritório" class="rounded-lg shadow-xl w-full transform hover:scale-105 transition-transform duration-500 ease-in-out">
+            <!-- Sobreposição de texto na imagem -->
+        </div>
+
+        <!-- Texto -->
+        <div class="lg:w-1/2">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-secondary mb-6 animate__animated animate__fadeIn animate__delay-1s">Sobre o Escritório</h2>
+            <p class="text-grayish mb-6 text-lg">Fundado em 2005, o escritório Veredas Advocacia Previdenciária se destaca pela excelência técnica e atendimento personalizado na defesa dos direitos previdenciários.</p>
+            <p class="text-grayish mb-8 text-lg">Nossa equipe é composta por especialistas com ampla experiência no INSS e Justiça Federal, garantindo a melhor estratégia para cada caso.</p>
+
+            <!-- Elemento visual para anos de experiência -->
+            <div class="bg-secondary bg-opacity-20 border-l-4 border-secondary p-6 mb-8 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+            <p class="font-heading text-2xl text-light">Mais de <span class="text-secondary text-4xl font-bold">18 anos</span> de experiência em Direito Previdenciário</p>
+            </div>
+
+            <!-- Lista de vantagens com hover -->
+            <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center hover:text-yellow-500 transition-colors duration-300">
+                <div class="text-secondary mr-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <p class="text-grayish">Atendimento humanizado</p>
+            </div>
+            <div class="flex items-center hover:text-yellow-500 transition-colors duration-300">
+                <div class="text-secondary mr-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <p class="text-grayish">Resultados comprovados</p>
+            </div>
+            <div class="flex items-center hover:text-yellow-500 transition-colors duration-300">
+                <div class="text-secondary mr-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <p class="text-grayish">Transparência total</p>
+            </div>
+            <div class="flex items-center hover:text-yellow-500 transition-colors duration-300">
+                <div class="text-secondary mr-3">
+                <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <p class="text-grayish">Honorários justos</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Equipe -->
+    <section id="equipe" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Nossa Equipe</h2>
+                <div class="gold-divider"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">Profissionais altamente qualificados dedicados exclusivamente ao Direito Previdenciário.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Membro 1 -->
+                <div data-aos="fade-up" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Dr. Carlos Mendes" class="object-cover rounded-md w-full h-62" style="object-position: center;">
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-primary mb-1">Dr. Carlos Mendes</h3>
+                        <p class="text-secondary mb-4">Sócio Fundador - OAB/SP 123.456</p>
+                        <p class="text-gray-600">Especialista em Direito Previdenciário com mais de 20 anos de atuação exclusiva na área.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <a href="https://www.linkedin.com/in/dr-carlos-mendes" class="text-primary hover:text-accent transition">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://wa.me/551234567890?text=Olá, gostaria de agendar uma consulta com o Dr. Carlos Mendes." class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition">
+                                Agendar Consulta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 2 -->
+                <div data-aos="fade-up" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Dra. Ana Lúcia Silva" class="object-cover rounded-md w-full h-62">
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-primary mb-1">Dra. Ana Lúcia Silva</h3>
+                        <p class="text-secondary mb-4">Sócia - OAB/SP 234.567</p>
+                        <p class="text-gray-600">Mestre em Direito Social com ampla experiência em revisões de benefícios previdenciários.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <a href="https://www.linkedin.com/in/dra-ana-lucia-silva" class="text-primary hover:text-accent transition">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <button class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition">Agendar Consulta</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 3 -->
+                <div data-aos="fade-up" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Dr. Rafael Costa" class="object-cover rounded-md w-full h-62">
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold text-primary mb-1">Dr. Rafael Costa</h3>
+                        <p class="text-secondary mb-4">Advogado - OAB/SP 345.678</p>
+                        <p class="text-gray-600">Especialista em processos administrativos e judiciais junto ao INSS.</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <a href="https://www.linkedin.com/in/dr-rafael-costa" class="text-primary hover:text-accent transition">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <button class="bg-primary text-white py-2 px-4 rounded-md hover:bg-accent transition">Agendar Consulta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts para AOS (Animação) -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+ <!-- Depoimentos -->
+<section class="py-20 bg-primary" id="depoimentos">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">Depoimentos</h2>
+            <div class="gold-divider"></div>
+            <p class="text-gray-30 max-w-2xl mx-auto mt-6">O que nossos clientes dizem sobre nosso trabalho.</p>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Depoimento 1 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                        <div class="text-secondary text-3xl mb-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"Graças ao escritório Veredas consegui minha aposentadoria após anos de tentativas frustradas. Profissionais extremamente competentes e atenciosos."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="João Martins" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                            <div>
+                                <h4 class="font-bold text-primary">João Martins</h4>
+                                <p class="text-sm text-gray-500">Aposentado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                        <div class="text-secondary text-3xl mb-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"Recebi orientação clara em cada etapa do processo. O auxílio doença foi concedido mais rápido do que esperava. Recomendo a todos!"</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Ana Santos" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                            <div>
+                                <h4 class="font-bold text-primary">Ana Santos</h4>
+                                <p class="text-sm text-gray-500">Professora</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card bg-white p-8 rounded-lg border border-secondary shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105">
+                        <div class="text-secondary text-3xl mb-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"Após o falecimento do meu marido, a Dra. Ana me orientou com sensibilidade e competência sobre os direitos previdenciários que eu tinha."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Maria Fernandes" class="w-12 h-12 rounded-full border-2 border-primary mr-4">
+                            <div>
+                                <h4 class="font-bold text-primary">Maria Fernandes</h4>
+                                <p class="text-sm text-gray-500">Viúva</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Adicionar navegação (botões de próxima e anterior) -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- Link para mais depoimentos -->
+        <div class="text-center mt-12">
+            <a href="#mais-depoimentos" class="text-primary hover:text-accent transition duration-300">Veja mais depoimentos</a>
+        </div>
+    </div>
+</section>
+
+<!-- Adicionar Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 40
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 50
+            }
+        }
+    });
+</script>
+
+
+<!-- CTA -->
+<section id="consulta" class="py-20 bg-[#1a1a1a] bg-cover bg-center" >
+
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-light mb-6">Agende uma consulta e proteja seus direitos previdenciários hoje mesmo.</h2>
+        <p class="text-light text-xl mb-10 max-w-2xl mx-auto">Nossa equipe está pronta para orientá-lo sobre a melhor estratégia para seu caso.</p>
+        
+        <!-- Botão CTA com animação -->
+        <a href="#contato" class="bg-secondary hover:bg-accent text-light hover:text-primary px-8 py-4 rounded font-medium text-lg transition-all duration-300 transform hover:scale-105 inline-block shadow-lg">
+            Agendar Consulta
+        </a>
+    </div>
+</section>
+
+
+<!-- Contato -->
+<section id="contato" class="py-20 bg-light">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Contato</h2>
+            <div class="border-t-2 border-primary w-32 mx-auto mb-6"></div> <!-- Novo divisor -->
+            <p class="text-gray-600 max-w-2xl mx-auto mt-6">Entre em contato conosco para agendar uma consulta ou tirar suas dúvidas.</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-1/2">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nome" class="block text-gray-700 mb-2">Nome</label>
+                            <input type="text" id="nome" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent shadow-md transition duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent shadow-md transition duration-300">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="telefone" class="block text-gray-700 mb-2">Telefone</label>
+                        <input type="tel" id="telefone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent shadow-md transition duration-300">
+                    </div>
+                    <div>
+                    <label for="assunto" class="block text-primary font-semibold mb-2">Assunto</label>
+                    <select id="assunto" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent shadow-md transition duration-300 bg-gray-50 text-gray-800 hover:bg-gray-100">
+                        <option value="" class="text-gray-500">Selecione um assunto</option>
+                        <option value="aposentadoria" class="text-gray-800">Aposentadoria</option>
+                        <option value="auxilio" class="text-gray-800">Auxílio Doença</option>
+                        <option value="pensao" class="text-gray-800">Pensão por Morte</option>
+                        <option value="revisao" class="text-gray-800">Revisão de Benefício</option>
+                        <option value="outro" class="text-gray-800">Outro</option>
+                    </select>
+
+                    </div>
+                    <div>
+                        <label for="mensagem" class="block text-gray-700 mb-2">Mensagem</label>
+                        <textarea id="mensagem" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent shadow-md transition duration-300"></textarea>
+                    </div>
+                    <button type="submit" class="bg-secondary hover:bg-primary text-light hover:text-primary px-8 py-3 rounded-md font-medium transition-all duration-300 transform hover:scale-105 inline-block shadow-lg">Enviar Mensagem</button>
+                </form>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="bg-white p-8 rounded-lg shadow-lg h-full">
+                    <h3 class="font-heading text-2xl font-bold text-primary mb-6">Informações de Contato</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-secondary text-xl mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary mb-1">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - 10º andar<br>São Paulo - SP, 01310-100</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-secondary text-xl mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary mb-1">Telefone</h4>
+                                <p class="text-gray-600">(11) 1234-5678<br>(11) 98765-4321 (WhatsApp)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-secondary text-xl mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary mb-1">E-mail</h4>
+                                <p class="text-gray-600">contato@veredasprev.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="text-secondary text-xl mr-4 mt-1">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary mb-1">Horário de Atendimento</h4>
+                                <p class="text-gray-600">Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 12h (com agendamento)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-bold text-primary mb-4">Siga-nos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-secondary hover:text-primary text-2xl transition">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-secondary hover:text-primary text-2xl transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-secondary hover:text-primary text-2xl transition">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="bg-primary py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="text-secondary text-2xl mr-2">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <a href="#" class="font-heading text-xl font-bold text-secondary">Guimarães Advocaia</a>
+                    </div>
+                    <p class="text-grayish text-sm mt-2">OAB/SP 123.456/SP</p>
+                </div>
+                
+                <div class="text-grayish text-center md:text-right">
+                    <p>© 2023 Veredas Advocacia Previdenciária. Todos os direitos reservados.</p>
+                    <p class="mt-2">Desenvolvido com excelência jurídica.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-grayish border-opacity-20 mt-8 pt-8">
+                <p class="text-grayish text-sm text-center">As informações contidas neste site têm caráter meramente informativo e não substituem a consulta com um advogado especializado.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="fixed bottom-8 right-8 bg-secondary text-primary w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg transition opacity-0 invisible hover:bg-light">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
